@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Привітання для Андрія</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe6f2, #e6f7ff);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+h1 { color: #333; }
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #444;
+}
+button {
+    margin-top: 30px;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background: #ff66a3;
+    color: white;
+    cursor: pointer;
+}
+button:hover { background: #ff3385; }
+
+/* Confetti animation */
+.confetti {
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  animation: fall 2.7s linear forwards;
+  z-index: 9999;
+}
+@keyframes fall {
+  0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+  100% { opacity: 0; transform: translateY(900px) rotate(360deg); }
+}
+
+/* Hidden YouTube player */
+#music {
+    width: 0;
+    height: 0;
+    border: none;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>З Днем народження, Андрію!</h1>
+    <p>Нехай у твоєму житті буде більше моментів, від яких перехоплює подих, менше зайвих турбот і тільки справжнє щастя поруч. Бажаю тобі впевненості в кожному кроці, мудрості в кожному рішенні й перемог у всіх справах. Нехай твої мрії не просто збуваються, а перевершують очікування. Бажаю, щоб кожен день приносив щось хороше: посмішку, нову ідею, вдалу можливість чи просто приємний момент. Будь щасливим, енергійним і таким же крутим, як завжди! З днем народження!</p>
+</div>
+
+<button onclick="playMusic(); launchConfetti()">Свято тут</button>
+
+<!-- Hidden YouTube audio -->
+<iframe 
+    id="music"
+    src="https://www.youtube.com/embed/m0JHf-cigRc?autoplay=1"
+    allow="autoplay">
+</iframe>
+
+<script>
+let musicStarted = false;
+
+function playMusic() {
+    if (!musicStarted) {
+        document.getElementById("music").src =
+          "https://www.youtube.com/embed/m0JHf-cigRc?autoplay=1";
+        musicStarted = true;
+    }
+}
+
+function launchConfetti() {
+    for (let i = 0; i < 120; i++) {
+        let c = document.createElement('div');
+        c.classList.add('confetti');
+        c.style.backgroundColor = 'hsl(' + Math.random() * 360 + ',100%,50%)';
+        c.style.left = Math.random() * window.innerWidth + 'px';
+        c.style.top = "-20px";
+
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 3000);
+    }
+}
+</script>
+
+</body>
+</html>
